@@ -1,12 +1,13 @@
-.navbar-nav{
-    text-align: center;
-  }
-  a {
+.navbar-nav {
+  text-align: center;
+}
+
+a {
   position: relative;
   // text-decoration: none;
   color: var(--primary-color);
   font-size: 5em;
-  
+
   &:after {
     content: "";
     position: absolute;
@@ -20,22 +21,43 @@
     transform-origin: right;
     transition: transform 0.75s ease-in-out;
   }
-  
-  &:hover{
+
+  &:hover {
     color: var(--primary-color);
   }
-  
-  
+
+
   &:hover:after {
     color: var(--primary-color);
     transform: scaleX(1);
     transform-origin: left;
     transition: transform 0.25s ease-in-out;
   }
-  .active-link{
-   color:#c49f42;
-   text-decoration: underline;
-   text-underline-offset: 20px;
-  }
-  
-  }
+
+
+}
+
+.active-link {
+  color: #c49f42;
+  // text-decoration: underline;
+  text-underline-offset: 20px;
+}
+
+a:link {
+  color: #c49f42;
+}
+
+/* visited link */
+a:visited {
+  color: #c49f42;
+}
+
+/* mouse over link */
+a:hover {
+  color: #c49f42;
+}
+
+/* selected link */
+a:active {
+  color: #c49f42;
+}
