@@ -10,6 +10,9 @@ export class HomeComponent {
 
   constructor(public router:Router){}
 
-  
+  navigatetocontact(){
+    this.router.navigate(['/contact']);
+  }
+
 
 }

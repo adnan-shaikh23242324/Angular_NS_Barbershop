@@ -1,1 +1,155 @@
-<p>contact works!</p>
+<section>
+    <div class="contact-info justify-content-center">
+        <div class="card grey-bg">
+            <div class="card-body">
+                <div class="row m-4">
+                    <div class="col-xl-4 col-md-4 col-sm-4">
+                        <img src="../../../../assets/contact-us/contact-us-circle.png" height="70rem" width="70rem"
+                            alt="">
+                        <p>
+                            <a href="tel:+91 345378765" class="info-text">+91 9825879206</a>
+                        </p>
+                    </div>
+                    <div class="col-xl-4 col-md-4 col-sm-4">
+                        <img src="../../../../assets/contact-us/location-circle.png" height="70rem" width="70rem"
+                            alt="">
+                        <p class="info-text">
+                            GF-17,Royal Akbar Tower,Ahmedabad
+                        </p>
+                    </div>
+                    <div class="col-xl-4 col-md-4 col-sm-4">
+                        <img src="../../../../assets/contact-us/email-us-circle.png" height="70rem" width="70rem"
+                            alt="">
+                        <p>
+                            <a href="mailto:xyz@gmail.com" class="info-text">xyz@gmail.com</a>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div *ngIf="submitted" class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Your form has been submitted succesfully</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        <div class="container-fluid px-5 my-5">
+            <div class="row  justify-content-center">
+                <div class="col-xl-10 ">
+                    <div class="card mb-5 border-0 rounded-3  overflow-hidden">
+                        <div class="card-body p-0">
+                            <div class="row g-0">
+                                <div class="col-sm-6 d-none d-sm-block bg-image">
+                                    <img src="assets\header\pexels-thgusstavo-santana-1813272.jpg" class="w-100 h-100"
+                                        alt="">
+
+                                </div>
+                                <div class="col-sm-6 p-4">
+                                    <div class="text-center">
+                                        <div class="h3 fw-light">Contact Form</div>
+                                        <p class="mb-4 text-muted"> Your details will not be shared</p>
+                                    </div>
+
+                                    <!-- * * * * * * * * * * * * * *
+                // * * SB Forms Contact Form * *
+                // * * * * * * * * * * * * * * *
+  
+                // This form is pre-integrated with SB Forms.
+                // To make this form functional, sign up at
+                // https://startbootstrap.com/solution/contact-forms
+                // to get an API token!
+                -->
+
+                                    <form id="contactForm" class="form-group" [formGroup]="contactForm"
+                                        (ngSubmit)="onsubmit()">
+
+                                        <!-- Name Input formControlName="" -->
+                                        <div class="form-floating mb-3">
+                                            <input formControlName="Name" class="form-control" id="name" type="text"
+                                                placeholder="Name"
+                                                [ngClass]="{'is-invalid':  ( this.submitButtonFalselyTriggered || NameControl?.touched) && NameControl?.errors }" />
+                                            <label for="name">Name</label>
+                                            <div class="invalid-feedback" data-sb-feedback="name:required">
+                                                <h6><Strong>Name is required.</Strong></h6>
+                                            </div>
+                                        </div>
+
+                                        <!-- Email Input formControlName="" -->
+                                        <div class="form-floating mb-3">
+                                            <input formControlName="Email" class="form-control" id="emailAddress"
+                                                type="email" placeholder="Email Address"
+                                                [ngClass]="{'is-invalid':(  this.submitButtonFalselyTriggered ||EmailControl?.touched) && EmailControl?.errors }"
+                                                data-sb-validations="required email" />
+                                            <label for="emailAddress">Email Address</label>
+
+                                            <div *ngIf="EmailControl?.hasError('required') &&( EmailControl?.touched || this.submitButtonFalselyTriggered)"
+                                                class="invalid-feedback" data-sb-feedback="emailAddress:required">
+                                                <h6><Strong>Email Address is required.</Strong></h6>
+                                            </div>
+                                            <div *ngIf="EmailControl?.hasError('pattern')" class="invalid-feedback"
+                                                data-sb-feedback="emailAddress:email">
+                                                <h6><Strong>Email Address is not valid.</Strong></h6>
+                                            </div>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <input formControlName="PhoneNumber" class="form-control" id="phoneNumber"
+                                                type="tel" placeholder="Phone Number"
+                                                [ngClass]="{'is-invalid':(  this.submitButtonFalselyTriggered || PhoneNumberControl?.touched) && PhoneNumberControl?.errors }"
+                                                data-sb-validations="required tel" />
+                                            <label for="phoneNumber">Phone Number </label>
+
+                                            <div *ngIf="PhoneNumberControl?.hasError('required') &&( PhoneNumberControl?.touched || this.submitButtonFalselyTriggered)"
+                                                class="invalid-feedback" data-sb-feedback="phoneNumber:required">
+                                                <h6><Strong>Phone Number is required.</Strong></h6>
+                                            </div>
+                                            <div *ngIf="PhoneNumberControl?.hasError('pattern')"
+                                                class="invalid-feedback" data-sb-feedback="phoneNumber:tel">
+                                                <h6><Strong>Phone Number is not valid.</Strong></h6>
+                                            </div>
+                                        </div>
+                                        <!-- Message Input formControlName="" -->
+                                        <div class="form-floating mb-3">
+                                            <textarea formControlName="Message" class="form-control" id="message"
+                                                type="text" placeholder="Message" style="height: 10rem;"
+                                                data-sb-validations="required"></textarea>
+                                            <label for="message">Message</label>
+                                            <div class="invalid-feedback" data-sb-feedback="message:required">Message is
+                                                required.</div>
+                                        </div>
+
+                                        <!-- Submit success message -->
+                                        <div class="d-none" id="submitSuccessMessage">
+                                            <div class="text-center mb-3">
+                                                <div class="fw-bolder">Form submission successful!</div>
+                                                <p>To activate this form, sign up at</p>
+                                                <a
+                                                    href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                                            </div>
+                                        </div>
+
+                                        <!-- Submit error message -->
+                                        <div class="d-none" id="submitErrorMessage">
+                                            <div class="text-center text-danger mb-3">Error sending message!</div>
+                                        </div>
+
+                                        <!-- Submit button -->
+                                        <div class="d-grid">
+                                            <button class=" btn  btn-lg " id="submitButton"
+                                                type="submit">Submit</button>
+                                        </div>
+                                    </form>
+
+                                    <!-- End of contact form -->
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
